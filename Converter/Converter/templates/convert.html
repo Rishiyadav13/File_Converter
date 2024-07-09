@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCX to PDF Conversion</title>
+  <style>
+    /* CSS styles go here */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+      padding: 10px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    button[type="submit"] {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    }
+  </style>
+</head>
+<body>
+  <h2>Convert DOCX to PDF</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="docx_file" accept=".docx" required>
+    <label for="action">Action:</label>
+  <input type="radio" id="view" name="action" value="view" checked>
+  <label for="view">View Online</label>
+  <input type="radio" id="download" name="action" value="download">
+  <label for="download">Download</label><br><br>
+  
+  <button type="submit">Submit</button>
+</form>
+</html>

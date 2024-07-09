@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Conversion</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  <style>
+    /* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  padding: 10px;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 24px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.convert-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.convert-button:hover {
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+.dropdown{
+  display: inline-block;
+}
+.dropdown button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 100px; 
+}
+.dropdown a{
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.dropdown .content{
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content{
+  display: block;
+}
+.dropdown:hover button{
+  background-color: hsl(0, 0%, 70%);
+}
+.dropdown a:hover{
+  background-color: hsl(0, 0%, 90%);
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Document Conversion Options</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="dropdown">
+    <button>Conversion Menu</button>
+    <div class="content">
+        <a href="{% url 'html_to_pdf' %}">Convert HTML to PDF</a>
+        <a href="{% url 'convert_docx_to_pdf' %}">Convert DOCX to PDF</a>
+    </div>
+</div>
+</body>
+</html>
