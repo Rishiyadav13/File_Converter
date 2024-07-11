@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'test_db',
         'ENFORCE_SCHEMA' : False,
         'CLIENT':{
-            'host': 'mongodb+srv://test_db:test_db@atlascluster.2ae5xlv.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster',
+            'host': config('host'),
             'port': 27017,
             'username': 'test_db',      #data base name
             'password': 'test_db',      #database password
@@ -155,7 +155,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'rishi@thoughtwin.com'
-EMAIL_HOST_PASSWORD = 'ehfx xuzd iblg ksoc'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 UNOCONV_PATH = '/usr/bin/unoconv'  # Adjust the path based on your system
 UNOCONV_TEMP_DIR = '/path/to/temp/dir/'
@@ -192,3 +192,18 @@ LOGGING = {
         },
     },
 }
+
+# Setting of Sentry here
+
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn=config('dns'),
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)

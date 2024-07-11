@@ -19,8 +19,13 @@ from django.urls import path
 from authapp import views
 from django.conf import settings
 from django.conf.urls.static import static
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sentry-debug/', trigger_error),
     path('home/', views.home, name='home'),
     path('register/', views.register_view, name='register'),
     path('', views.login_view, name='login'),
