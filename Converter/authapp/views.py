@@ -14,6 +14,10 @@ import string
 from django.core.files.storage import FileSystemStorage
 import pypandoc
 from captcha.image import ImageCaptcha
+import razorpay
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 import logging
 logger=logging.getLogger(__name__)
@@ -205,3 +209,20 @@ def temp_tag(request):
         "author": "Rishi yadav",
     }
     return render(request, "index.html", context)
+
+
+def payment(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        amount = 50000
+
+        client = razorpay.Client(
+            auth=("rzp_test_9nmrK825fjo0Ym", "1f1icPZDRCKvac3lzpOmLSl1"))
+
+        payment = client.order.create({'amount': amount, 'currency': 'INR',
+                                       'payment_capture': '1'})
+    return render(request, 'payment.html')
+
+@csrf_exempt
+def success(request):
+    return render(request, "success.html")

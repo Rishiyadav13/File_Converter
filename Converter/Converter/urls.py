@@ -35,9 +35,10 @@ urlpatterns = [
     path('generate-captcha/', views.generate_captcha, name='generate-captcha'),
     path('profile/', views.profile_view, name='profile'),
     path('temp_tag/', views.temp_tag, name='temp_tag'),
+    path('pay/', views.payment, name='pay'),
+    path('success/' , views.success , name='success')
 
 
-    
     
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
