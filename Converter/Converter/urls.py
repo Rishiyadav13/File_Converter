@@ -34,6 +34,7 @@ urlpatterns = [
     path('convert/',views.convert_docx_to_pdf , name='convert_docx_to_pdf'),
     path('generate-captcha/', views.generate_captcha, name='generate-captcha'),
     path('profile/', views.profile_view, name='profile'),
+    path('temp_tag/', views.temp_tag, name='temp_tag'),
 
 
     

@@ -196,3 +196,12 @@ def profile_view(request):
             'image': user_detail.image,
         }
         return render(request, 'profile.html', context)
+    
+
+
+# for template tag 
+def temp_tag(request):
+    context = {
+        "author": "Rishi yadav",
+    }
+    return render(request, "index.html", context)

@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'authapp.custom_middleware.comiddlewares.customware',
+    'authapp.custom_middleware.middlewares.IPBlacklistMiddleware'
 ]
 
 ROOT_URLCONF = 'Converter.urls'
@@ -207,3 +209,10 @@ sentry_sdk.init(
     # We recommend adjusting this value in production.
     profiles_sample_rate=1.0,
 )
+
+
+# Banned ip custom middleware
+BANNED_IPS = [
+    # '127.0.0.1',
+    '127.0.0.5'
+]
